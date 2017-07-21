@@ -1,0 +1,9 @@
+name: Migrate Fruits
+type: module
+description: Migrate Fruit Nodes From d7 instance to d8
+core: 8.x
+package: Other
+dependencies:
+  - migrate
+  - migrate_plus
+  - migrate_tools

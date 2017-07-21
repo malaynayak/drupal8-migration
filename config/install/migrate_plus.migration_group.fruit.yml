@@ -1,0 +1,7 @@
+id: fruit
+label: Migrate Fruits
+description: Migrate Fruits from 7 to 8 migration
+source_type: Custom database
+shared_configuration:
+  source:
+    key: db_migration

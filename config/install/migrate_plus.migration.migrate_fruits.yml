@@ -1,0 +1,48 @@
+id: migrate_fruits
+label: Migrate Fruits
+deriver: Drupal\node\Plugin\migrate\D7NodeDeriver
+migration_group: fruit
+source:
+  plugin: migrate_fruits
+  target: db_migration
+  node_type: fruit
+process:
+  type:
+    plugin: default_value
+    default_value: fruit
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: "und"
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  path: alias
+  field_price: price
+  field_vitamins: vitamin_terms
+  field_fruit_image: fruit_images
+  'body/format':
+    plugin: static_map
+    bypass: true
+    source: body_format
+    map:
+      plain_text: plain_text
+      filtered_html: restricted_html
+      full_html: full_html
+  'body/value': body_value
+  'body/summary': body_summary
+destination:
+  plugin: entity:node
+migration_dependencies:
+  required:
+    - migrate_fruit_vitamins
+    - migrate_fruit_images

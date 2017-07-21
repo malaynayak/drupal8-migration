@@ -1,0 +1,30 @@
+id: migrate_fruit_vitamins
+label: Fruit Vitamin Terms
+migration_group: fruit
+dependencies:
+  enforced:
+    module:
+      - fruit_migration
+source:
+  plugin: migrate_fruit_vitamins
+  target: db_migration
+process:
+  tid: tid
+  vid: vocbulary_machine_name
+  name: name
+  description: description
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration: migrate_fruit_vitamins
+  parent:
+    plugin: default_value
+    default_value: 0
+    source: '@parent_id'
+destination:
+  plugin: entity:taxonomy_term

@@ -1,0 +1,10 @@
+<?php
+/**
+ * Implements hook_uninstall()
+ **/
+function fruit_migration_uninstall() {
+  \Drupal::entityManager()->getStorage('migration')->load('migrate_fruits')->delete();
+  \Drupal::entityManager()->getStorage('migration')->load('migrate_fruit_vitamins')->delete();
+  \Drupal::entityManager()->getStorage('migration')->load('migrate_fruit_images')->delete();
+  \Drupal::entityManager()->getStorage('migration_group')->load('fruit')->delete();
+}
